@@ -91,6 +91,41 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                           ),
+                          TextButton(
+                            onPressed: () => debugPrint('HOME pressed'),
+                            child: const Text(
+                              'Home',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => debugPrint('SHOP pressed'),
+                            child: const Text(
+                              'Shop',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => debugPrint('PRINT SCHACK pressed'),
+                            child: const Text(
+                              'The Print Shack',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => debugPrint('Sale pressed'),
+                            child: const Text(
+                              'SALE!',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => debugPrint('ABOUT pressed'),
+                            child: const Text(
+                              'About',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
                           const Spacer(),
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
