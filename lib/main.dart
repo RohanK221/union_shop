@@ -39,11 +39,78 @@ class HomeScreen extends StatelessWidget {
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
+    debugPrint('Button pressed - placeholder');
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    // Define a breakpoint for small screens (e.g., less than 600 pixels)
+    final bool isSmallScreen = screenWidth < 600;
+
     return Scaffold(
+      // Conditionally add a Drawer for small screens
+      drawer: isSmallScreen
+          ? Drawer(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: const Text(
+                      'Union Shop',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.home),
+                    title: const Text('Home'),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+                      navigateToHome(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.shop),
+                    title: const Text('Shop'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      placeholderCallbackForButtons(); // Keep existing functionality
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.print),
+                    title: const Text('The Print Shack'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      placeholderCallbackForButtons(); // Keep existing functionality
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.local_offer),
+                    title: const Text('SALE!'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      placeholderCallbackForButtons(); // Keep existing functionality
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.info),
+                    title: const Text('About'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      placeholderCallbackForButtons(); // Keep existing functionality
+                    },
+                  ),
+                ],
+              ),
+            )
+          : null, // No drawer on larger screens
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -91,42 +158,46 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          TextButton(
-                            onPressed: () => debugPrint('HOME pressed'),
-                            child: const Text(
-                              'Home',
-                              style: TextStyle(color: Colors.black),
+                          // Conditionally display navigation buttons for larger screens
+                          if (!isSmallScreen) ...[
+                            TextButton(
+                              onPressed: () => debugPrint('HOME pressed'),
+                              child: const Text(
+                                'Home',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () => debugPrint('SHOP pressed'),
-                            child: const Text(
-                              'Shop',
-                              style: TextStyle(color: Colors.black),
+                            TextButton(
+                              onPressed: () => debugPrint('SHOP pressed'),
+                              child: const Text(
+                                'Shop',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () => debugPrint('PRINT SCHACK pressed'),
-                            child: const Text(
-                              'The Print Shack',
-                              style: TextStyle(color: Colors.black),
+                            TextButton(
+                              onPressed: () => debugPrint('PRINT SCHACK pressed'),
+                              child: const Text(
+                                'The Print Shack',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () => debugPrint('Sale pressed'),
-                            child: const Text(
-                              'SALE!',
-                              style: TextStyle(color: Colors.black),
+                            TextButton(
+                              onPressed: () => debugPrint('Sale pressed'),
+                              child: const Text(
+                                'SALE!',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () => debugPrint('ABOUT pressed'),
-                            child: const Text(
-                              'About',
-                              style: TextStyle(color: Colors.black),
+                            TextButton(
+                              onPressed: () => debugPrint('ABOUT pressed'),
+                              child: const Text(
+                                'About',
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
-                          ),
+                          ],
                           const Spacer(),
+                          // Action icons (Search, Person, Shopping Bag) and conditional Menu icon
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
                             child: Row(
@@ -171,19 +242,23 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   onPressed: placeholderCallbackForButtons,
                                 ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.menu,
-                                    size: 18,
-                                    color: Colors.grey,
+                                // Show menu icon only on small screens to open the drawer
+                                if (isSmallScreen)
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.menu,
+                                      size: 18,
+                                      color: Colors.grey,
+                                    ),
+                                    padding: const EdgeInsets.all(8),
+                                    constraints: const BoxConstraints(
+                                      minWidth: 32,
+                                      minHeight: 32,
+                                    ),
+                                    onPressed: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
                                   ),
-                                  padding: const EdgeInsets.all(8),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 32,
-                                    minHeight: 32,
-                                  ),
-                                  onPressed: placeholderCallbackForButtons,
-                                ),
                               ],
                             ),
                           ),
@@ -214,7 +289,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.7),
+                          color: Colors.black.withOpacity(0.7), // Corrected withValues to withOpacity
                         ),
                       ),
                     ),
