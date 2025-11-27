@@ -200,66 +200,71 @@ class HomeScreen extends StatelessWidget {
                           // Action icons (Search, Person, Shopping Bag) and conditional Menu icon
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.search,
-                                    size: 18,
-                                    color: Colors.grey,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 32,
-                                    minHeight: 32,
-                                  ),
-                                  onPressed: placeholderCallbackForButtons,
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.person_outline,
-                                    size: 18,
-                                    color: Colors.grey,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 32,
-                                    minHeight: 32,
-                                  ),
-                                  onPressed: placeholderCallbackForButtons,
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.shopping_bag_outlined,
-                                    size: 18,
-                                    color: Colors.grey,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 32,
-                                    minHeight: 32,
-                                  ),
-                                  onPressed: placeholderCallbackForButtons,
-                                ),
-                                // Show menu icon only on small screens to open the drawer
-                                if (isSmallScreen)
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.menu,
-                                      size: 18,
-                                      color: Colors.grey,
+                            child: Builder( // Add Builder here
+                              builder: (BuildContext innerContext) { // Use innerContext
+                                return Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.search,
+                                        size: 18,
+                                        color: Colors.grey,
+                                      ),
+                                      padding: const EdgeInsets.all(8),
+                                      constraints: const BoxConstraints(
+                                        minWidth: 32,
+                                        minHeight: 32,
+                                      ),
+                                      onPressed: placeholderCallbackForButtons,
                                     ),
-                                    padding: const EdgeInsets.all(8),
-                                    constraints: const BoxConstraints(
-                                      minWidth: 32,
-                                      minHeight: 32,
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.person_outline,
+                                        size: 18,
+                                        color: Colors.grey,
+                                      ),
+                                      padding: const EdgeInsets.all(8),
+                                      constraints: const BoxConstraints(
+                                        minWidth: 32,
+                                        minHeight: 32,
+                                      ),
+                                      onPressed: placeholderCallbackForButtons,
                                     ),
-                                    onPressed: () {
-                                      Scaffold.of(context).openDrawer();
-                                    },
-                                  ),
-                              ],
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 18,
+                                        color: Colors.grey,
+                                      ),
+                                      padding: const EdgeInsets.all(8),
+                                      constraints: const BoxConstraints(
+                                        minWidth: 32,
+                                        minHeight: 32,
+                                      ),
+                                      onPressed: placeholderCallbackForButtons,
+                                    ),
+                                    // Show menu icon only on small screens to open the drawer
+                                    if (isSmallScreen)
+                                      IconButton(
+                                        icon: const Icon(
+                                          Icons.menu,
+                                          size: 18,
+                                          color: Colors.grey,
+                                        ),
+                                        padding: const EdgeInsets.all(8),
+                                        constraints: const BoxConstraints(
+                                          minWidth: 32,
+                                          minHeight: 32,
+                                        ),
+                                        onPressed: () {
+                                          // Use the innerContext provided by the Builder
+                                          Scaffold.of(innerContext).openDrawer();
+                                        },
+                                      ),
+                                  ],
+                                );
+                              },
                             ),
                           ),
                         ],
