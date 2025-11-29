@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/models/products.dart';
 
 class ProductPage extends StatelessWidget {
-  final String title;
-  final String price;
-  final String imageUrl;
-  final String description;
+  final Product product; 
 
   const ProductPage({
     super.key,
-    required this.title,
-    required this.price,
-    required this.imageUrl,
-    this.description = 'No description available.', // Default description
+    required this.product,
   });
 
   void navigateToHome(BuildContext context) {
@@ -159,7 +154,7 @@ class ProductPage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        imageUrl,
+                        product.imageUrl, // Use data from the product object
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -191,7 +186,7 @@ class ProductPage extends StatelessWidget {
 
                   // Product name
                   Text(
-                    title,
+                    product.title, // Use data from the product object
                     style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -203,7 +198,7 @@ class ProductPage extends StatelessWidget {
 
                   // Product price
                   Text(
-                    price, 
+                    product.price, // Use data from the product object
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -224,7 +219,7 @@ class ProductPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    description,
+                    product.description, // Use data from the product object
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
