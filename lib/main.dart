@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
 
@@ -244,7 +245,6 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                       onPressed: placeholderCallbackForButtons,
                                     ),
-                                    // Show menu icon only on small screens to open the drawer
                                     if (isSmallScreen)
                                       IconButton(
                                         icon: const Icon(
@@ -408,31 +408,47 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey[50],
               padding: const EdgeInsets.all(24),
-              child: const Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'OPENING HOURS',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, letterSpacing: 1),
+                          'Opening Hours',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 8),
                         Text('(Term Time)'),
                         SizedBox(height: 8),
-                        Text('Mon - Fri: 10am - 4pm'),
+                        Text('Monday - Friday: 10am - 4pm'),
                         SizedBox(height: 16),
                         Text('(Outside of Term Time / Consolidation Weeks)'),
                         SizedBox(height: 8),
-                        Text('Mon - Fri: 10am - 3pm'),
+                        Text('Monday - Friday: 10am - 3pm'),
                         SizedBox(height: 8),
                         Text('Purchase Online 24/7'),
                       ],
                     ),
                   ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Help and Information',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                            onPressed: () => debugPrint('Search pressed'),
+                            child: const Text('Search')),
+                        TextButton(
+                            onPressed: () => debugPrint('t&c pressed'),
+                            child: const Text('Terms & Conditions policy')),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
