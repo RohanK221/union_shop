@@ -465,19 +465,20 @@ class HomeScreen extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8),
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Email address',
-                          border: OutlineInputBorder(),
-                          isDense: true,
-                          contentPadding: EdgeInsets.all(12),
+                      const SizedBox(
+                        width: 400,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Email address',
+                            border: OutlineInputBorder(),                            
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: () => debugPrint('Sign up pressed'),
                         style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(double.infinity, 40),
+                          maximumSize: const Size(160, 40),
                           backgroundColor: const Color(0xFF4d2963),
                           foregroundColor: Colors.white,
                           shape: const RoundedRectangleBorder(
