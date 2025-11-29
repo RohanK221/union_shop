@@ -1,0 +1,23 @@
+import 'package:union_shop/product_model.dart';
+
+final List<Product> allProducts = [
+  const Product(
+    id: 'magnet',
+    title: 'Portsmouth City Magnet',
+    price: '£5.00',
+    imageUrl:
+        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+    description:
+        'A magnet showcasing the Portsmouth cityscape.',
+  ),
+  const Product(
+    id: 'hoodie',
+    title: 'University Hoodie',
+    price: '£35.00',
+    imageUrl:
+        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+    description:
+        'A comfortable and stylish hoodie.',
+  ),
+
+];
