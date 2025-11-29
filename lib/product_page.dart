@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+  final String title;
+  final String price;
+  final String imageUrl;
+  final String description;
+
+  const ProductPage(
+      {super.key,
+      required this.title,
+      required this.price,
+      required this.imageUrl,
+      required this.description});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
