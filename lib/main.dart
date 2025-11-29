@@ -441,11 +441,21 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextButton(
-                            onPressed: () => debugPrint('Search pressed'),
-                            child: const Text('Search')),
+                          onPressed: () => debugPrint('Search pressed'),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            alignment: Alignment.centerLeft,
+                          ),
+                          child: const Text('Search'),
+                        ),
                         TextButton(
-                            onPressed: () => debugPrint('t&c pressed'),
-                            child: const Text('Terms & Conditions policy')),
+                          onPressed: () => debugPrint('t&c pressed'),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            alignment: Alignment.centerLeft,
+                          ),
+                          child: const Text('Terms & Conditions policy'),
+                        ),
                       ],
                     ),
                   )
