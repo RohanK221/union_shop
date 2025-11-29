@@ -408,13 +408,32 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey[50],
               padding: const EdgeInsets.all(24),
-              child: const Text(
-                'Placeholder Footer',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+              child: const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'OPENING HOURS',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, letterSpacing: 1),
+                        ),
+                        SizedBox(height: 16),
+                        Text('(Term Time)'),
+                        SizedBox(height: 8),
+                        Text('Mon - Fri: 10am - 4pm'),
+                        SizedBox(height: 16),
+                        Text('(Outside of Term Time / Consolidation Weeks)'),
+                        SizedBox(height: 8),
+                        Text('Mon - Fri: 10am - 3pm'),
+                        SizedBox(height: 8),
+                        Text('Purchase Online 24/7'),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
