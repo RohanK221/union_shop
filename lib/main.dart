@@ -408,90 +408,85 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey[50],
               padding: const EdgeInsets.all(24),
-              child: Row(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Opening Hours',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 8),
-                        Text('(Term Time)'),
-                        SizedBox(height: 8),
-                        Text('Monday - Friday: 10am - 4pm'),
-                        SizedBox(height: 16),
-                        Text('(Outside of Term Time / Consolidation Weeks)'),
-                        SizedBox(height: 8),
-                        Text('Monday - Friday: 10am - 3pm'),
-                        SizedBox(height: 8),
-                        Text('Purchase Online 24/7'),
-                      ],
-                    ),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Opening Hours',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8),
+                      Text('(Term Time)'),
+                      SizedBox(height: 8),
+                      Text('Monday - Friday: 10am - 4pm'),
+                      SizedBox(height: 16),
+                      Text('(Outside of Term Time / Consolidation Weeks)'),
+                      SizedBox(height: 8),
+                      Text('Monday - Friday: 10am - 3pm'),
+                      SizedBox(height: 8),
+                      Text('Purchase Online 24/7'),
+                    ],
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Help and Information',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                  const SizedBox(height: 24),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Help and Information',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        onPressed: () => debugPrint('Search pressed'),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          alignment: Alignment.centerLeft,
                         ),
-                        TextButton(
-                          onPressed: () => debugPrint('Search pressed'),
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            alignment: Alignment.centerLeft,
-                          ),
-                          child: const Text('Search'),
+                        child: const Text('Search'),
+                      ),
+                      TextButton(
+                        onPressed: () => debugPrint('t&c pressed'),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          alignment: Alignment.centerLeft,
                         ),
-                        TextButton(
-                          onPressed: () => debugPrint('t&c pressed'),
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            alignment: Alignment.centerLeft,
-                          ),
-                          child: const Text('Terms & Conditions policy'),
-                        ),
-                      ],
-                    ),
+                        child: const Text('Terms & Conditions policy'),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Latest Offers',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                  const SizedBox(height: 24),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Latest Offers',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      const TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Email address',
+                          border: OutlineInputBorder(),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(12),
                         ),
-
-                        const SizedBox(height: 8),
-                        const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Email address',
-                            border: OutlineInputBorder(),
-                            isDense: true,
-                            contentPadding: EdgeInsets.all(12),
+                      ),
+                      const SizedBox(height: 8),
+                      ElevatedButton(
+                        onPressed: () => debugPrint('Sign up pressed'),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(double.infinity, 40),
+                          backgroundColor: const Color(0xFF4d2963),
+                          foregroundColor: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        ElevatedButton(
-                          onPressed: () => debugPrint('Sign up pressed'),
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 40),
-                            backgroundColor: const Color(0xFF4d2963),
-                            foregroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
-                            ),
-                          ),
-                          child: const Text('SUBSCRIBE'),
-                        ),
-                      ],
-                    ),
+                        child: const Text('SUBSCRIBE'),
+                      ),
+                    ],
                   ),
                 ],
               ),
