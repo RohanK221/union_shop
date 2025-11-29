@@ -458,7 +458,41 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Latest Offers',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+
+                        const SizedBox(height: 8),
+                        const TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Email address',
+                            border: OutlineInputBorder(),
+                            isDense: true,
+                            contentPadding: EdgeInsets.all(12),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () => debugPrint('Sign up pressed'),
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 40),
+                            backgroundColor: const Color(0xFF4d2963),
+                            foregroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero,
+                            ),
+                          ),
+                          child: const Text('SUBSCRIBE'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
