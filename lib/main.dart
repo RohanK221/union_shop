@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:union_shop/data/product_data';
+import 'package:union_shop/models/products.dart';
 import 'package:union_shop/pages/product_page.dart';
 
 void main() {
@@ -22,7 +24,10 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+        for (var product in allProducts)
+          '/product/${product.id}': (context) => ProductPage(product: product),
+      },
     );
   }
 }
@@ -176,7 +181,8 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                             TextButton(
-                              onPressed: () => debugPrint('PRINT SCHACK pressed'),
+                              onPressed: () =>
+                                  debugPrint('PRINT SCHACK pressed'),
                               child: const Text(
                                 'The Print Shack',
                                 style: TextStyle(color: Colors.black),
@@ -201,8 +207,10 @@ class HomeScreen extends StatelessWidget {
                           // Action icons (Search, Person, Shopping Bag) and conditional Menu icon
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
-                            child: Builder( // Add Builder here
-                              builder: (BuildContext innerContext) { // Use innerContext
+                            child: Builder(
+                              // Add Builder here
+                              builder: (BuildContext innerContext) {
+                                // Use innerContext
                                 return Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -259,7 +267,8 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         onPressed: () {
                                           // Use the innerContext provided by the Builder
-                                          Scaffold.of(innerContext).openDrawer();
+                                          Scaffold.of(innerContext)
+                                              .openDrawer();
                                         },
                                       ),
                                   ],
@@ -294,7 +303,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.7), // Corrected withValues to withOpacity
+                          color: Colors.black.withOpacity(
+                              0.7), // Corrected withValues to withOpacity
                         ),
                       ),
                     ),
@@ -367,35 +377,13 @@ class HomeScreen extends StatelessWidget {
                     GridView.count(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount:
-                          MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                      crossAxisCount: isSmallScreen ? 2 : 4,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 48,
-                      children: const [
-                        ProductCard(
-                          title: 'Placeholder Product 1',
-                          price: '£10.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 2',
-                          price: '£15.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 3',
-                          price: '£20.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 4',
-                          price: '£25.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        ),
+                      // Manually create a card for each of the two products
+                      children: [
+                        ProductCard(product: allProducts[0]),
+                        ProductCard(product: allProducts[1]),
                       ],
                     ),
                   ],
@@ -470,7 +458,7 @@ class HomeScreen extends StatelessWidget {
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Email address',
-                            border: OutlineInputBorder(),                            
+                            border: OutlineInputBorder(),
                           ),
                         ),
                       ),
@@ -500,55 +488,63 @@ class HomeScreen extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final String imageUrl;
+  final Product product; // Accept a Product object
 
   const ProductCard({
     super.key,
-    required this.title,
-    required this.price,
-    required this.imageUrl,
+    required this.product, // Make it required
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.pushNamed(context, '/product/${product.id}');
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[300],
-                  child: const Center(
-                    child: Icon(Icons.image_not_supported, color: Colors.grey),
-                  ),
-                );
-              },
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey[200],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  product.imageUrl, // Use data from the product object
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(Icons.image_not_supported, color: Colors.grey),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 4),
-              Text(
-                title,
-                style: const TextStyle(fontSize: 14, color: Colors.black),
-                maxLines: 2,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                price,
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
-              ),
-            ],
+          const SizedBox(height: 12),
+          Text(
+            product.title, // Use data from the product object
+            style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            product.price, // Use data from the product object
+            style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF4d2963)),
           ),
         ],
       ),
