@@ -3,21 +3,21 @@ import 'package:union_shop/models/products.dart';
 final List<Product> allProducts = [
   const Product(
     id: 'magnet',
-    title: 'Portsmouth City Magnet',
-    price: '£5.00',
-    imageUrl:
-        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-    description:
-        'A magnet showcasing the Portsmouth cityscape.',
-  ),
-  const Product(
-    id: 'hoodie',
-    title: 'University Hoodie',
+    title: 'Univeristy Anchor Hoodie',
     price: '£35.00',
     imageUrl:
-        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+        'assets/images/anchordesign/blackhoodie.png',
     description:
-        'A comfortable and stylish hoodie.',
+        'A navy design on a comfortable hoodie.',
+  ),
+  const Product(
+    id: 'Club Hoodie',
+    title: 'University Football Hoodie',
+    price: '£35.00',
+    imageUrl:
+        'assets/images/clubdesign/bluehoodie.png',
+    description:
+        'A comfortable and stylish football themed hoodie.',
   ),
 
 ];
