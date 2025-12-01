@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/main.dart'; // Import for ProductCard and other widgets
 
 class MainLayout extends StatelessWidget {
   final Widget child;
@@ -137,7 +136,7 @@ class MainLayout extends StatelessWidget {
             // Footer
             Container(
               width: double.infinity,
-              color: Colors.grey[50],
+              color: Colors.grey[300],
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -202,6 +201,8 @@ class MainLayout extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: 'Email address',
                             border: OutlineInputBorder(),
+                            filled: true,
+                            fillColor: Colors.white,
                           ),
                         ),
                       ),

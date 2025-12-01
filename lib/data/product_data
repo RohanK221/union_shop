@@ -3,16 +3,16 @@ import 'package:union_shop/models/products.dart';
 final List<Product> allProducts = [
   const Product(
     id: 'magnet',
-    title: 'Univeristy Anchor Hoodie',
+    title: 'Portsmouth Anchor Hoodie',
     price: '£35.00',
     imageUrl:
         'assets/images/anchordesign/blackhoodie.png',
     description:
-        'A navy design on a comfortable hoodie.',
+        'A navy themed design on a comfortable hoodie.',
   ),
   const Product(
     id: 'Club Hoodie',
-    title: 'University Football Hoodie',
+    title: 'Portsmouth Football Hoodie',
     price: '£35.00',
     imageUrl:
         'assets/images/clubdesign/bluehoodie.png',
