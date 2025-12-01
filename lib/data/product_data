@@ -2,22 +2,35 @@ import 'package:union_shop/models/products.dart';
 
 final List<Product> allProducts = [
   const Product(
-    id: 'magnet',
+    id: 'anchor-hoodie',
     title: 'Portsmouth Anchor Hoodie',
     price: '£35.00',
-    imageUrl:
-        'assets/images/anchordesign/blackhoodie.png',
-    description:
-        'A navy themed design on a comfortable hoodie.',
+    // Use the 'variations' list instead of imageUrl
+    variations: [
+      ProductVariation(
+        color: 'Black',
+        imageUrl: 'assets/images/anchordesign/blackhoodie.png',
+      ),
+    ],
+    description: 'A navy themed design on a comfortable hoodie.',
   ),
   const Product(
-    id: 'Club Hoodie',
+    id: 'club-hoodie',
     title: 'Portsmouth Football Hoodie',
     price: '£35.00',
-    imageUrl:
-        'assets/images/clubdesign/bluehoodie.png',
-    description:
-        'A comfortable and stylish football themed hoodie.',
+    // Use the 'variations' list for this product as well
+    variations: [
+      ProductVariation(
+        color: 'Blue',
+        imageUrl: 'assets/images/clubdesign/bluehoodie.png',
+      ),
+      // Add other color variations here when you have them
+      // For example:
+      // ProductVariation(
+      //   color: 'Grey',
+      //   imageUrl: 'assets/images/clubdesign/greyhoodie.png',
+      // ),
+    ],
+    description: 'A comfortable and stylish football themed hoodie.',
   ),
-
 ];

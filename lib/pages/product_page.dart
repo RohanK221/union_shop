@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/models/products.dart';
 import 'package:union_shop/widgets/layout.dart';
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   final Product product;
 
   const ProductPage({
     super.key,
     required this.product,
   });
+
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  late String _selectedColor;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize with the first color from the product's variations
+    _selectedColor = widget.product.variations.first.color;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +44,7 @@ class ProductPage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  product.imageUrl,
+                  widget.product.imageUrl,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -62,7 +76,7 @@ class ProductPage extends StatelessWidget {
 
             // Product name
             Text(
-              product.title,
+              widget.product.title,
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -74,7 +88,7 @@ class ProductPage extends StatelessWidget {
 
             // Product price
             Text(
-              product.price,
+              widget.product.price,
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -83,6 +97,44 @@ class ProductPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 24),
+
+            const Text(
+              'Select Color',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.0),
+                border: Border.all(color: Colors.grey.shade400, width: 1),
+              ),
+              child: DropdownButton<String>(
+                value: _selectedColor,
+                isExpanded: true,
+                underline: const SizedBox(), // Hides the default underline
+                onChanged: (String? newValue) {
+                  // This updates the state of the dropdown itself
+                  setState(() {
+                    _selectedColor = newValue!;
+                  });
+                },
+                // Add the missing 'items' property
+                items: widget.product.variations
+                    .map<DropdownMenuItem<String>>((ProductVariation variation) {
+                  return DropdownMenuItem<String>(
+                    value: variation.color,
+                    child: Text(variation.color),
+                  );
+                }).toList(),
+              ),
+            ), // Closing parenthesis for the Container
+
+            const SizedBox(height: 24), // Added for spacing
 
             // Product description
             const Text(
@@ -93,12 +145,13 @@ class ProductPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
+
             const SizedBox(height: 8),
             Text(
-              product.description,
+              widget.product.description,
               style: const TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
+                fontSize: 16, // Corrected font size
+                color: Colors.grey, // Corrected color
                 height: 1.5,
               ),
             ),

@@ -41,7 +41,6 @@ class HomeScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final bool isSmallScreen = screenWidth < 600;
 
-    // The HomeScreen now returns the MainLayout, passing its unique content as the child
     return MainLayout(
       child: Column(
         children: [
@@ -141,7 +140,6 @@ class HomeScreen extends StatelessWidget {
                     crossAxisCount: isSmallScreen ? 2 : 4,
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 48,
-                    // Manually create a card for each of the two products
                     children: [
                       ProductCard(product: allProducts[0]),
                       ProductCard(product: allProducts[1]),
