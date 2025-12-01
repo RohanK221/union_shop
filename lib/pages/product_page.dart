@@ -15,13 +15,12 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  late String _selectedColor;
+  late ProductVariation _selectedVariation;
 
   @override
   void initState() {
     super.initState();
-    // Initialize with the first color from the product's variations
-    _selectedColor = widget.product.variations.first.color;
+    _selectedVariation = widget.product.variations.first;
   }
 
   @override
@@ -42,9 +41,8 @@ class _ProductPageState extends State<ProductPage> {
                 color: Colors.grey[200],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  widget.product.imageUrl,
+                borderRadius: BorderRadius.circular(8),                child: Image.asset(
+                  _selectedVariation.imageUrl,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -99,10 +97,10 @@ class _ProductPageState extends State<ProductPage> {
             const SizedBox(height: 24),
 
             const Text(
-              'Select Color',
+              'Color',
               style: TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
             ),
@@ -114,16 +112,15 @@ class _ProductPageState extends State<ProductPage> {
                 border: Border.all(color: Colors.grey.shade400, width: 1),
               ),
               child: DropdownButton<String>(
-                value: _selectedColor,
+                value: _selectedVariation.color,
                 isExpanded: true,
-                underline: const SizedBox(), // Hides the default underline
+                underline: const SizedBox(),
                 onChanged: (String? newValue) {
-                  // This updates the state of the dropdown itself
                   setState(() {
-                    _selectedColor = newValue!;
+                    _selectedVariation = widget.product.variations
+                        .firstWhere((variation) => variation.color == newValue);
                   });
                 },
-                // Add the missing 'items' property
                 items: widget.product.variations
                     .map<DropdownMenuItem<String>>((ProductVariation variation) {
                   return DropdownMenuItem<String>(
@@ -132,9 +129,9 @@ class _ProductPageState extends State<ProductPage> {
                   );
                 }).toList(),
               ),
-            ), // Closing parenthesis for the Container
+            ), 
 
-            const SizedBox(height: 24), // Added for spacing
+            const SizedBox(height: 24), 
 
             // Product description
             const Text(
@@ -150,8 +147,8 @@ class _ProductPageState extends State<ProductPage> {
             Text(
               widget.product.description,
               style: const TextStyle(
-                fontSize: 16, // Corrected font size
-                color: Colors.grey, // Corrected color
+                fontSize: 16,
+                color: Colors.grey, 
                 height: 1.5,
               ),
             ),

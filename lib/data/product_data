@@ -24,12 +24,10 @@ final List<Product> allProducts = [
         color: 'Blue',
         imageUrl: 'assets/images/clubdesign/bluehoodie.png',
       ),
-      // Add other color variations here when you have them
-      // For example:
-      // ProductVariation(
-      //   color: 'Grey',
-      //   imageUrl: 'assets/images/clubdesign/greyhoodie.png',
-      // ),
+      ProductVariation(
+         color: 'Grey',
+         imageUrl: 'assets/images/clubdesign/greyhoodie.png',
+       ),
     ],
     description: 'A comfortable and stylish football themed hoodie.',
   ),
