@@ -108,12 +108,10 @@ class _ProductPageState extends State<ProductPage> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                border: Border.all(color: Colors.grey.shade400, width: 1),
+                border: Border.all(color: Colors.grey, width: 1),
               ),
               child: DropdownButton<String>(
-                value: _selectedVariation.color,
-                isExpanded: true,
+                value: _selectedVariation.color,                
                 underline: const SizedBox(),
                 onChanged: (String? newValue) {
                   setState(() {

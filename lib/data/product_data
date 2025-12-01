@@ -5,11 +5,18 @@ final List<Product> allProducts = [
     id: 'anchor-hoodie',
     title: 'Portsmouth Anchor Hoodie',
     price: '£35.00',
-    // Use the 'variations' list instead of imageUrl
     variations: [
       ProductVariation(
         color: 'Black',
         imageUrl: 'assets/images/anchordesign/blackhoodie.png',
+      ),
+      ProductVariation(
+         color: 'Grey',
+         imageUrl: 'assets/images/anchordesign/greyhoodie.png',
+      ),
+      ProductVariation(
+         color: 'Red',
+         imageUrl: 'assets/images/anchordesign/redhoodie.png',
       ),
     ],
     description: 'A navy themed design on a comfortable hoodie.',
@@ -18,7 +25,6 @@ final List<Product> allProducts = [
     id: 'club-hoodie',
     title: 'Portsmouth Football Hoodie',
     price: '£35.00',
-    // Use the 'variations' list for this product as well
     variations: [
       ProductVariation(
         color: 'Blue',
@@ -28,6 +34,10 @@ final List<Product> allProducts = [
          color: 'Grey',
          imageUrl: 'assets/images/clubdesign/greyhoodie.png',
        ),
+      ProductVariation(
+         color: 'Red',
+         imageUrl: 'assets/images/clubdesign/redhoodie.png',
+      ),
     ],
     description: 'A comfortable and stylish football themed hoodie.',
   ),
