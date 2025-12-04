@@ -106,7 +106,6 @@ class MainLayout extends StatelessWidget {
                                 style: TextStyle(color: Colors.black),
                               ),
                             ),
-                            // ... other header buttons
                           ],
                           const Spacer(),
                           Builder(
@@ -120,7 +119,7 @@ class MainLayout extends StatelessWidget {
                                   ),
                                   IconButton(
                                     icon: const Icon(Icons.person_outline, size: 18, color: Colors.grey),
-                                    onPressed: placeholderCallbackForButtons,
+                                    onPressed: () => Navigator.pushNamed(context, '/login'),
                                   ),
                                   IconButton(
                                     icon: const Icon(Icons.shopping_bag_outlined, size: 18, color: Colors.grey),

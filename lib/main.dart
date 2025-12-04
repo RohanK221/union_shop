@@ -5,6 +5,7 @@ import 'package:union_shop/models/products.dart';
 import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/pages/aboutus_page.dart';
+import 'package:union_shop/pages/login_page.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -27,6 +28,7 @@ class UnionShopApp extends StatelessWidget {
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
+        '/login': (context) => const LoginPage(),
         '/about-us': (context) => const AboutUsPage(),
         for (var product in allProducts)
           '/product/${product.id}': (context) => ProductPage(product: product),
@@ -66,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(
-                            0.7), // Corrected withValues to withOpacity
+                            0.7), 
                       ),
                     ),
                   ),
@@ -158,11 +160,11 @@ class HomeScreen extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  final Product product; // Accept a Product object
+  final Product product; 
 
   const ProductCard({
     super.key,
-    required this.product, // Make it required
+    required this.product, 
   });
 
   @override
@@ -184,7 +186,7 @@ class ProductCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  product.imageUrl, // Use data from the product object
+                  product.imageUrl, 
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -200,7 +202,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            product.title, // Use data from the product object
+            product.title, 
             style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -210,7 +212,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            product.price, // Use data from the product object
+            product.price, 
             style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
