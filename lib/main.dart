@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                       ElevatedButton(
-                        onPressed: () => debugPrint('BROWSE PRODUCTS pressed'),
+                        onPressed: () => Navigator.pushNamed(context, '/collection'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF4d2963),
                           foregroundColor: Colors.white,
@@ -149,6 +149,8 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       ProductCard(product: allProducts[0]),
                       ProductCard(product: allProducts[1]),
+                      ProductCard(product: allProducts[2]),
+                      ProductCard(product: allProducts[3]),
                     ],
                   ),
                 ],
