@@ -4,6 +4,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'anchor-hoodie',
     title: 'Portsmouth Anchor Hoodie',
+    category: 'Clothing',
     price: '£35.00',
     isOnSale: true,
     salePrice: '£25.00',
@@ -26,6 +27,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'club-hoodie',
     title: 'Portsmouth Football Hoodie',
+    category: 'Clothing',
     price: '£35.00',
     variations: [
       ProductVariation(
@@ -46,6 +48,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'Sweatshirt',
     title: 'Navy themed Sweatshirt',
+    category: 'Clothing',
     price: '£30.00',
     variations: [
       ProductVariation(
@@ -62,6 +65,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'Pen1',
     title: 'Pen',
+    category: 'Stationery',
     price: '£1.00',
     variations: [
       ProductVariation(
@@ -78,6 +82,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'Notebook1',
     title: 'Notebook',
+    category: 'Stationery',
     price: '£2.00',
     variations: [
       ProductVariation(
@@ -94,6 +99,7 @@ final List<Product> allProducts = [
   const Product(
     id: 'Mug1',
     title: 'Mug',
+    category: 'Accessories',
     price: '£1.50',
     variations: [
       ProductVariation(
