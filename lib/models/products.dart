@@ -12,17 +12,20 @@ class Product {
   final String id;
   final String title;
   final String price;
-  final List<ProductVariation> variations; // This is the missing property
+  final List<ProductVariation> variations;
   final String description;
-
-  // This is a helper to get the first image for the main product grid
-  String get imageUrl => variations.first.imageUrl;
+  final bool isOnSale;
+  final String? salePrice;
 
   const Product({
     required this.id,
     required this.title,
     required this.price,
-    required this.variations, // Add it to the constructor
+    required this.variations,
     required this.description,
+    this.isOnSale = false,
+    this.salePrice,
   });
+
+  String get imageUrl => variations.first.imageUrl;
 }

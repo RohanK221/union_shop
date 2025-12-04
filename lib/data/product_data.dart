@@ -5,6 +5,8 @@ final List<Product> allProducts = [
     id: 'anchor-hoodie',
     title: 'Portsmouth Anchor Hoodie',
     price: '£35.00',
+    isOnSale: true,
+    salePrice: '£25.00',
     variations: [
       ProductVariation(
         color: 'Black',

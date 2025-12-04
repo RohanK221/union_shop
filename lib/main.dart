@@ -213,13 +213,36 @@ class ProductCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 4),
-          Text(
-            product.price, 
-            style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF4d2963)),
-          ),
+          if (product.isOnSale)
+            Row(
+              children: [
+                Text(
+                  product.salePrice!,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  product.price,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+              ],
+            )
+          else
+            Text(
+              product.price,
+              style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF4d2963)),
+            ),
         ],
       ),
     );
