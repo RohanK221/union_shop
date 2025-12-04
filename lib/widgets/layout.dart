@@ -44,7 +44,14 @@ class MainLayout extends StatelessWidget {
                       navigateToHome(context);
                     },
                   ),
-                  // ... other drawer items
+                  ListTile(
+                    leading: const Icon(Icons.info_outline),
+                    title: const Text('About Us'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/about-us');
+                    },
+                  ),
                 ],
               ),
             )
@@ -88,6 +95,14 @@ class MainLayout extends StatelessWidget {
                               onPressed: () => navigateToHome(context),
                               child: const Text(
                                 'Home',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/about-us'),
+                              child: const Text(
+                                'About Us',
                                 style: TextStyle(color: Colors.black),
                               ),
                             ),
