@@ -22,3 +22,7 @@ flutter:
   assets:
     - assets/images/clubdesign/
     - assets/images/anchordesign/
+    - assets/images/mug/
+    - assets/images/notebook/
+    - assets/images/pen/
+    - assets/images/sweatshirt/

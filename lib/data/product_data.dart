@@ -87,7 +87,7 @@ final List<Product> allProducts = [
          imageUrl: 'assets/images/notebook/blue.png',
       ),
     ],
-    description: 'A comfortable and stylish navy themed sweatshirt.',
+    description: 'A Portsmouth University branded notebook.',
   ),
   const Product(
     id: 'Mug1',
@@ -107,6 +107,6 @@ final List<Product> allProducts = [
          imageUrl: 'assets/images/mug/blue.png',
       ),
     ],
-    description: 'A comfortable and stylish navy themed sweatshirt.',
+    description: 'A Portsmouth University branded mug.',
   ),
 ];

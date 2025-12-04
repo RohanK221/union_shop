@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/data/product_data.dart';
 import 'package:union_shop/main.dart';
-import 'package:union_shop/models/products.dart'; // Import Product model
+import 'package:union_shop/models/products.dart';
 import 'package:union_shop/widgets/layout.dart';
 
 class CollectionPage extends StatefulWidget {

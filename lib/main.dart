@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:union_shop/data/product_data';
+import 'package:union_shop/data/product_data.dart';
 import 'package:union_shop/models/products.dart';
 import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/widgets/layout.dart';
