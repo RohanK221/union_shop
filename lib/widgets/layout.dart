@@ -52,6 +52,14 @@ class MainLayout extends StatelessWidget {
                       Navigator.pushNamed(context, '/about-us');
                     },
                   ),
+                  ListTile(
+                    leading: const Icon(Icons.shop),
+                    title: const Text('Shop'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/collection');
+                    },
+                  ),
                 ],
               ),
             )
@@ -106,6 +114,14 @@ class MainLayout extends StatelessWidget {
                                 style: TextStyle(color: Colors.black),
                               ),
                             ),
+                             TextButton(
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/collection'),
+                              child: const Text(
+                                'Shop',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
                           ],
                           const Spacer(),
                           Builder(
@@ -144,7 +160,6 @@ class MainLayout extends StatelessWidget {
               ),
             ),
 
-            // This is where the unique page content will go
             child,
 
             // Footer
