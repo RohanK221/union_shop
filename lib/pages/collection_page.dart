@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/data/product_data.dart';
 import 'package:union_shop/main.dart';
+import 'package:union_shop/models/products.dart'; // Import Product model
 import 'package:union_shop/widgets/layout.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -11,7 +12,39 @@ class CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<CollectionPage> {
+  late List<Product> _products;
+  String _sortOption = 'default';
 
+  @override
+  void initState() {
+    super.initState();
+    _products = List.from(allProducts);
+  }
+
+  double _parsePrice(String price) {
+    return double.parse(price.replaceAll('£', ''));
+  }
+
+  void _sortProducts() {
+    setState(() {
+      switch (_sortOption) {
+        case 'alpha_asc':
+          _products.sort((a, b) => a.title.compareTo(b.title));
+          break;
+        case 'alpha_desc':
+          _products.sort((a, b) => b.title.compareTo(a.title));
+          break;
+        case 'price_asc':
+          _products.sort((a, b) => _parsePrice(a.price).compareTo(_parsePrice(b.price)));
+          break;
+        case 'price_desc':
+          _products.sort((a, b) => _parsePrice(b.price).compareTo(_parsePrice(a.price)));
+          break;
+        default:
+          _products = List.from(allProducts);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +64,31 @@ class _CollectionPageState extends State<CollectionPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text('Sort by: '),
+                const SizedBox(width: 8),
+                DropdownButton<String>(
+                  value: _sortOption,
+                  items: const [
+                    DropdownMenuItem(value: 'default', child: Text('Featured')),
+                    DropdownMenuItem(value: 'alpha_asc', child: Text('Alphabetically, A-Z')),
+                    DropdownMenuItem(value: 'alpha_desc', child: Text('Alphabetically, Z-A')),
+                    DropdownMenuItem(value: 'price_asc', child: Text('Price, low to high')),
+                    DropdownMenuItem(value: 'price_desc', child: Text('Price, high to low')),
+                  ],
+                  onChanged: (value) {
+                    if (value != null) {
+                      _sortOption = value;
+                      _sortProducts();
+                    }
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -41,9 +98,9 @@ class _CollectionPageState extends State<CollectionPage> {
                 mainAxisSpacing: 48,
                 childAspectRatio: 0.7,
               ),
-              itemCount: allProducts.length,
+              itemCount: _products.length,
               itemBuilder: (context, index) {
-                return ProductCard(product: allProducts[index]);
+                return ProductCard(product: _products[index]);
               },
             ),
           ],
