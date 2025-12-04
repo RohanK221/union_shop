@@ -6,7 +6,7 @@ import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/pages/aboutus_page.dart';
 import 'package:union_shop/pages/login_page.dart';
-import 'package:union_shop/pages/collection_page.dart';
+import 'package:union_shop/pages/shop_page.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -29,7 +29,7 @@ class UnionShopApp extends StatelessWidget {
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
-        '/collection': (context) => const CollectionPage(),
+        '/shop': (context) => const ShopPage(),
         '/login': (context) => const LoginPage(),
         '/about-us': (context) => const AboutUsPage(),
         for (var product in allProducts)
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                       ElevatedButton(
-                        onPressed: () => Navigator.pushNamed(context, '/collection'),
+                        onPressed: () => Navigator.pushNamed(context, '/shop'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF4d2963),
                           foregroundColor: Colors.white,
