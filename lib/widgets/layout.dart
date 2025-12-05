@@ -60,6 +60,14 @@ class MainLayout extends StatelessWidget {
                       Navigator.pushNamed(context, '/collections');
                     },
                   ),
+                  ListTile(
+                    leading: const Icon(Icons.local_offer),
+                    title: const Text('Sale'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/sale');
+                    },
+                  ),
                 ],
               ),
             )
@@ -119,6 +127,14 @@ class MainLayout extends StatelessWidget {
                             child: const Text(
                               'Collections',
                               style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pushNamed(context, '/sale'),
+                            child: const Text(
+                              'Sale',
+                              style: TextStyle(color: Colors.red),
                             ),
                           ),
                         ],

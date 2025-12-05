@@ -10,6 +10,7 @@ import 'package:union_shop/pages/shop_clothing.dart';
 import 'package:union_shop/pages/shop_stationery.dart';
 import 'package:union_shop/pages/shop_accessories.dart';
 import 'package:union_shop/widgets/product_card.dart';
+import 'package:union_shop/pages/sale_page.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -32,6 +33,7 @@ class UnionShopApp extends StatelessWidget {
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
+        '/sale': (context) => const SalesPage(),
         '/shop': (context) => const ShopPage(),
         '/shop/clothing': (context) => const ShopClothingPage(),
         '/shop/stationery': (context) => const ShopStationeryPage(),

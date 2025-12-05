@@ -4,8 +4,8 @@ import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/widgets/product_card.dart';
 import 'package:union_shop/models/products.dart';
 
-class ShopItemsPage extends StatelessWidget {
-  const ShopItemsPage({super.key});
+class SalesPage extends StatelessWidget {
+  const SalesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
