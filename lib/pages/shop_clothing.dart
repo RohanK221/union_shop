@@ -9,20 +9,26 @@ class ShopClothingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Product> products = allProducts.where((p) => p.category == 'Clothing').toList();
+    final List<Product> products =
+        allProducts.where((p) => p.category == 'Clothing').toList();
     final screenWidth = MediaQuery.of(context).size.width;
     final bool isSmall = screenWidth < 600;
 
     return MainLayout(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Shop — Clothing', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 24),
-            Expanded(
-              child: GridView.builder(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Shop — Clothing',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: isSmall ? 2 : 4,
                   crossAxisSpacing: 24,
@@ -32,8 +38,8 @@ class ShopClothingPage extends StatelessWidget {
                 itemCount: products.length,
                 itemBuilder: (context, i) => ProductCard(product: products[i]),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

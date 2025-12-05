@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:union_shop/main.dart';
+import 'package:union_shop/pages/shop_stationery.dart';
+
+void main() {
+  testWidgets('navigates to shop stationery and shows ShopStationeryPage', (tester) async {
+    await tester.pumpWidget(const UnionShopApp());
+    await tester.pumpAndSettle();
+
+    final nav = tester.state<NavigatorState>(find.byType(Navigator));
+    nav.pushNamed('/shop/stationery');
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ShopStationeryPage), findsOneWidget);
+  });
+}

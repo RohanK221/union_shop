@@ -15,19 +15,20 @@ class ShopStationeryPage extends StatelessWidget {
     final bool isSmall = screenWidth < 600;
 
     return MainLayout(
-      child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Shop — Stationery',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: GridView.builder(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Shop — Stationery',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: isSmall ? 2 : 4,
                   crossAxisSpacing: 24,
@@ -35,11 +36,10 @@ class ShopStationeryPage extends StatelessWidget {
                   childAspectRatio: 0.7,
                 ),
                 itemCount: products.length,
-                itemBuilder: (context, i) =>
-                    ProductCard(product: products[i]),
+                itemBuilder: (context, i) => ProductCard(product: products[i]),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
