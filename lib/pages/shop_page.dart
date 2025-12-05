@@ -22,17 +22,10 @@ class _ShopPageState extends State<ShopPage> {
     _products = List.from(allProducts);
   }
 
-  // Helper function to parse price string to a number for sorting
-  double _parsePrice(String price) {
-    // For sale items, use the sale price to sort
-    final productPrice = allProducts
-        .firstWhere((p) => p.price == price, orElse: () => allProducts.first)
-        .isOnSale
-        ? allProducts
-            .firstWhere((p) => p.price == price, orElse: () => allProducts.first)
-            .salePrice!
-        : price;
-    return double.parse(productPrice.replaceAll('£', ''));
+  // Helper function to get the correct price (sale or regular) for sorting
+  double _getPriceForSorting(Product product) {
+    final priceString = product.isOnSale ? product.salePrice! : product.price;
+    return double.parse(priceString.replaceAll('£', ''));
   }
 
   void _sortProducts() {
@@ -45,12 +38,12 @@ class _ShopPageState extends State<ShopPage> {
           _products.sort((a, b) => b.title.compareTo(a.title));
           break;
         case 'price_asc':
-          _products.sort(
-              (a, b) => _parsePrice(a.price).compareTo(_parsePrice(b.price)));
+          _products.sort((a, b) =>
+              _getPriceForSorting(a).compareTo(_getPriceForSorting(b)));
           break;
         case 'price_desc':
-          _products.sort(
-              (a, b) => _parsePrice(b.price).compareTo(_parsePrice(a.price)));
+          _products.sort((a, b) =>
+              _getPriceForSorting(b).compareTo(_getPriceForSorting(a)));
           break;
         default:
           // Reset to the original order
