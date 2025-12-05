@@ -54,7 +54,7 @@ class CollectionPage extends StatelessWidget {
                 itemCount: collections.length,
                 itemBuilder: (context, index) {
                   final item = collections[index];
-                  return GestureDetector(
+                  return InkWell(
                     onTap: () =>
                         Navigator.pushNamed(context, item['route']!),
                     child: ClipRRect(
