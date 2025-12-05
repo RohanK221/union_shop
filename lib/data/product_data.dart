@@ -101,6 +101,8 @@ final List<Product> allProducts = [
     title: 'Mug',
     category: 'Accessories',
     price: '£1.50',
+    isOnSale: true,
+    salePrice: '£1.00',
     variations: [
       ProductVariation(
         color: 'White',
