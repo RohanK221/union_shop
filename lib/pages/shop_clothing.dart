@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/data/product_data.dart';
-import 'package:union_shop/main.dart';
 import 'package:union_shop/widgets/layout.dart';
+import 'package:union_shop/widgets/product_card.dart';
 import 'package:union_shop/models/products.dart';
 
 class ShopClothingPage extends StatelessWidget {
@@ -9,9 +9,9 @@ class ShopClothingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products = allProducts.where((p) => p.category == 'Clothing').toList();
+    final List<Product> products = allProducts.where((p) => p.category == 'Clothing').toList();
     final screenWidth = MediaQuery.of(context).size.width;
-    final bool isSmallScreen = screenWidth < 600;
+    final bool isSmall = screenWidth < 600;
 
     return MainLayout(
       child: Padding(
@@ -24,13 +24,13 @@ class ShopClothingPage extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: isSmallScreen ? 2 : 4,
+                  crossAxisCount: isSmall ? 2 : 4,
                   crossAxisSpacing: 24,
                   mainAxisSpacing: 48,
                   childAspectRatio: 0.7,
                 ),
                 itemCount: products.length,
-                itemBuilder: (context, index) => ProductCard(product: products[index]),
+                itemBuilder: (context, i) => ProductCard(product: products[i]),
               ),
             ),
           ],
