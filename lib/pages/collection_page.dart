@@ -83,7 +83,16 @@ class CollectionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/shop', arguments: category);
+        // open dedicated shop page per category
+        if (category == 'Clothing') {
+          Navigator.pushNamed(context, '/shop/clothing');
+        } else if (category == 'Stationery') {
+          Navigator.pushNamed(context, '/shop/stationery');
+        } else if (category == 'Accessories') {
+          Navigator.pushNamed(context, '/shop/accessories');
+        } else {
+          Navigator.pushNamed(context, '/shop/all');
+        }
       },
       child: Stack(
         alignment: Alignment.center,

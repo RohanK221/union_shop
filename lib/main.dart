@@ -8,7 +8,6 @@ import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/pages/aboutus_page.dart';
 import 'package:union_shop/pages/login_page.dart';
 import 'package:union_shop/pages/shop_page.dart';
-import 'package:union_shop/pages/shop_all.dart';
 import 'package:union_shop/pages/shop_clothing.dart';
 import 'package:union_shop/pages/shop_stationery.dart';
 import 'package:union_shop/pages/shop_accessories.dart';
