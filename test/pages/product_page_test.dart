@@ -1,18 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:union_shop/main.dart';
+import 'package:network_image_mock/network_image_mock.dart';
+import 'package:union_shop/data/product_data.dart';
+import 'package:union_shop/models/products.dart';
 import 'package:union_shop/pages/product_page.dart';
+import 'package:union_shop/widgets/layout.dart';
 
 void main() {
-  testWidgets('navigates to product page and shows ProductPage', (tester) async {
-    await tester.pumpWidget(const UnionShopApp());
-    await tester.pumpAndSettle();
+  final Product testProduct = allProducts.first;
 
-    // uses an ID from lib/data/product_data.dart
-    final nav = tester.state<NavigatorState>(find.byType(Navigator));
-    nav.pushNamed('/product/anchor-hoodie');
-    await tester.pumpAndSettle();
+  Widget createTestWidget() {
+    return MaterialApp(
+      home: ProductPage(product: testProduct),
+    );
+  }
 
-    expect(find.byType(ProductPage), findsOneWidget);
+  group('ProductPage Tests', () {
+    testWidgets('should display the correct product details', (tester) async {
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
+
+        expect(find.text(testProduct.title), findsOneWidget);
+        expect(find.text(testProduct.price), findsOneWidget);
+        expect(find.text(testProduct.description), findsOneWidget);
+      });
+    });
+
+    testWidgets('should display product image', (tester) async {
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
+        
+        expect(find.byType(Image), findsWidgets);
+      });
+    });
+
+    testWidgets('should be wrapped in MainLayout', (tester) async {
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
+
+        expect(find.byType(MainLayout), findsOneWidget);
+      });
+    });
   });
 }

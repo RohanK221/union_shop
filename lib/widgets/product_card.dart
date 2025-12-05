@@ -35,15 +35,26 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           if (product.isOnSale)
-            Row(
+            Wrap(
+              spacing: 8.0, // This is the space between the prices
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(product.salePrice!, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.red)),
-                const SizedBox(width: 8),
-                Text(product.price, style: const TextStyle(fontSize: 14, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+                Text(product.salePrice!,
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red)),
+                Text(product.price,
+                    style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough)),
               ],
             )
           else
-            Text(product.price, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+            Text(product.price,
+                style:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
         ],
       ),
     );

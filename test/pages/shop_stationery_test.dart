@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 import 'package:union_shop/main.dart';
 import 'package:union_shop/pages/shop_stationery.dart';
 
@@ -13,5 +14,14 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(ShopStationeryPage), findsOneWidget);
+  });
+
+  testWidgets('ShopStationeryPage builds correctly', (WidgetTester tester) async {
+    await mockNetworkImagesFor(() async {
+      await tester.pumpWidget(const MaterialApp(home: ShopStationeryPage()));
+
+      expect(find.text('Shop — Stationery'), findsOneWidget);
+      expect(find.byType(GridView), findsOneWidget);
+    });
   });
 }
