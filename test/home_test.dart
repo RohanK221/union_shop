@@ -31,16 +31,16 @@ void main() {
 
         // Check that the first 4 products from your data are displayed
         expect(find.text(allProducts[0].title), findsOneWidget);
-        expect(find.text('£${allProducts[0].price}'), findsOneWidget);
+        expect(find.text(allProducts[0].price), findsOneWidget);
 
         expect(find.text(allProducts[1].title), findsOneWidget);
-        expect(find.text('£${allProducts[1].price}'), findsOneWidget);
+        expect(find.text(allProducts[1].price), findsOneWidget);
 
         expect(find.text(allProducts[2].title), findsOneWidget);
-        expect(find.text('£${allProducts[2].price}'), findsOneWidget);
+        expect(find.text(allProducts[2].price), findsOneWidget);
         
         expect(find.text(allProducts[3].title), findsOneWidget);
-        expect(find.text('£${allProducts[3].price}'), findsOneWidget);
+        expect(find.text(allProducts[3].price), findsOneWidget);
 
         // Verify there are exactly 4 ProductCard widgets on the home screen
         expect(find.byType(ProductCard), findsNWidgets(4));

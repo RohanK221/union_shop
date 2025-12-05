@@ -28,7 +28,7 @@ final List<Product> allProducts = [
     id: 'club-hoodie',
     title: 'Portsmouth Football Hoodie',
     category: 'Clothing',
-    price: '£35.00',
+    price: '£40.00',
     variations: [
       ProductVariation(
         color: 'Blue',
