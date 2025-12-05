@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:union_shop/data/product_data.dart';
 import 'package:union_shop/models/products.dart';
+import 'package:union_shop/pages/collection_page.dart';
 import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/pages/aboutus_page.dart';
@@ -30,6 +31,7 @@ class UnionShopApp extends StatelessWidget {
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
         '/shop': (context) => const ShopPage(),
+        '/collections': (context) => const CollectionPage(),
         '/login': (context) => const LoginPage(),
         '/about-us': (context) => const AboutUsPage(),
         for (var product in allProducts)
@@ -104,7 +106,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                       ElevatedButton(
-                        onPressed: () => Navigator.pushNamed(context, '/shop'),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/collections'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF4d2963),
                           foregroundColor: Colors.white,

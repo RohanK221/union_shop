@@ -14,15 +14,31 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   late List<Product> _products;
   String _sortOption = 'default';
+  String? _category; // <-- added
+  bool _isInitialized = false; // <-- added
 
   @override
   void initState() {
     super.initState();
-    // Initialize _products with a mutable copy of allProducts
+
     _products = List.from(allProducts);
   }
 
-  // Helper function to get the correct price (sale or regular) for sorting
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialized) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is String) {
+        _category = args;
+        _products = allProducts.where((p) => p.category == _category).toList();
+      } else {
+        _products = List.from(allProducts);
+      }
+      _isInitialized = true;
+    }
+  }
+
   double _getPriceForSorting(Product product) {
     final priceString = product.isOnSale ? product.salePrice! : product.price;
     return double.parse(priceString.replaceAll('£', ''));
@@ -46,8 +62,12 @@ class _ShopPageState extends State<ShopPage> {
               _getPriceForSorting(b).compareTo(_getPriceForSorting(a)));
           break;
         default:
-          // Reset to the original order
-          _products = List.from(allProducts);
+          // Reset to the original order (respect category if set)
+          if (_category != null) {
+            _products = allProducts.where((p) => p.category == _category).toList();
+          } else {
+            _products = List.from(allProducts);
+          }
       }
     });
   }
