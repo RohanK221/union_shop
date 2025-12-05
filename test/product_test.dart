@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 import 'package:union_shop/data/product_data.dart';
 import 'package:union_shop/models/products.dart';
 import 'package:union_shop/pages/product_page.dart';
@@ -18,31 +19,32 @@ void main() {
 
   group('ProductPage Tests', () {
     testWidgets('should display the correct product details', (tester) async {
-      await tester.pumpWidget(createTestWidget());
-      await tester.pumpAndSettle();
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
 
-      // Check that the product's title, price, and description are displayed.
-      // Note: This assumes your ProductPage formats the price exactly as '£' + price.
-      expect(find.text(testProduct.title), findsOneWidget);
-      expect(find.text('£${testProduct.price}'), findsOneWidget);
-      expect(find.text(testProduct.description), findsOneWidget);
+        expect(find.text(testProduct.title), findsOneWidget);
+        expect(find.text(testProduct.price), findsOneWidget);
+        expect(find.text(testProduct.description), findsOneWidget);
+      });
     });
 
     testWidgets('should display product image', (tester) async {
-      await tester.pumpWidget(createTestWidget());
-      await tester.pumpAndSettle();
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
 
-      // Verify that an Image widget is present on the page.
-      expect(find.byType(Image), findsWidgets);
+        expect(find.byType(Image), findsWidgets);
+      });
     });
 
     testWidgets('should be wrapped in MainLayout', (tester) async {
-      await tester.pumpWidget(createTestWidget());
-      await tester.pumpAndSettle();
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(createTestWidget());
+        await tester.pumpAndSettle();
 
-      // Check that the page is using the MainLayout widget.
-      // This is more reliable than checking for specific header text.
-      expect(find.byType(MainLayout), findsOneWidget);
+        expect(find.byType(MainLayout), findsOneWidget);
+      });
     });
   });
 }

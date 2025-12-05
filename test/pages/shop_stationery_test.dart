@@ -6,14 +6,16 @@ import 'package:union_shop/pages/shop_stationery.dart';
 
 void main() {
   testWidgets('navigates to shop stationery and shows ShopStationeryPage', (tester) async {
-    await tester.pumpWidget(const UnionShopApp());
-    await tester.pumpAndSettle();
+    await mockNetworkImagesFor(() async {
+      await tester.pumpWidget(const UnionShopApp());
+      await tester.pumpAndSettle();
 
-    final nav = tester.state<NavigatorState>(find.byType(Navigator));
-    nav.pushNamed('/shop/stationery');
-    await tester.pumpAndSettle();
+      final nav = tester.state<NavigatorState>(find.byType(Navigator));
+      nav.pushNamed('/shop/stationery');
+      await tester.pumpAndSettle();
 
-    expect(find.byType(ShopStationeryPage), findsOneWidget);
+      expect(find.byType(ShopStationeryPage), findsOneWidget);
+    });
   });
 
   testWidgets('ShopStationeryPage builds correctly', (WidgetTester tester) async {
