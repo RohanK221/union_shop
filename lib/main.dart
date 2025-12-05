@@ -8,6 +8,10 @@ import 'package:union_shop/widgets/layout.dart';
 import 'package:union_shop/pages/aboutus_page.dart';
 import 'package:union_shop/pages/login_page.dart';
 import 'package:union_shop/pages/shop_page.dart';
+import 'package:union_shop/pages/shop_all.dart';
+import 'package:union_shop/pages/shop_clothing.dart';
+import 'package:union_shop/pages/shop_stationery.dart';
+import 'package:union_shop/pages/shop_accessories.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -31,6 +35,9 @@ class UnionShopApp extends StatelessWidget {
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
         '/shop': (context) => const ShopPage(),
+        '/shop/clothing': (context) => const ShopClothingPage(),
+        '/shop/stationery': (context) => const ShopStationeryPage(),
+        '/shop/accessories': (context) => const ShopAccessoriesPage(),
         '/collections': (context) => const CollectionPage(),
         '/login': (context) => const LoginPage(),
         '/about-us': (context) => const AboutUsPage(),
