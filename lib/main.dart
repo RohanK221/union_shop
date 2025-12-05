@@ -11,6 +11,7 @@ import 'package:union_shop/pages/shop_page.dart';
 import 'package:union_shop/pages/shop_clothing.dart';
 import 'package:union_shop/pages/shop_stationery.dart';
 import 'package:union_shop/pages/shop_accessories.dart';
+import 'package:union_shop/widgets/product_card.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
+                        image: AssetImage(
                           'assets/images/anchordesign/blackhoodie.png',
                         ),
                         fit: BoxFit.cover,
@@ -77,8 +78,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(
-                            0.7), 
+                        color: Colors.black.withOpacity(0.7),
                       ),
                     ),
                   ),
@@ -166,94 +166,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  final Product product; 
-
-  const ProductCard({
-    super.key,
-    required this.product, 
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/product/${product.id}');
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.grey[200],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  product.imageUrl, 
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      color: Colors.grey[300],
-                      child: const Center(
-                        child: Icon(Icons.image_not_supported, color: Colors.grey),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            product.title, 
-            style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.black),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          if (product.isOnSale)
-            Row(
-              children: [
-                Text(
-                  product.salePrice!,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  product.price,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    decoration: TextDecoration.lineThrough,
-                  ),
-                ),
-              ],
-            )
-          else
-            Text(
-              product.price,
-              style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF4d2963)),
-            ),
         ],
       ),
     );
