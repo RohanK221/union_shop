@@ -1,6 +1,6 @@
 # Union Shop
 
-A Flutter app for the University of Portsmouth union shop. The app showcases product collections, individual product pages, and simple navigation for browsing clothing, stationery, and accessories.
+A Flutter app for the University of Portsmouth union shop. The app showcases product collections, individual product pages, and simple navigation for browsing clothing, stationery, and accessories. Created for my Programming Applications and Programming Languages Module.
 
 Key features
 - Browse collections (Clothing, Stationery, Accessories)
@@ -81,9 +81,18 @@ See widget tests:
 - [test/home_test.dart](test/home_test.dart)
 - [test/pages/aboutus_page_test.dart](test/pages/aboutus_page_test.dart)
 
-Screenshots / GIFs
-- Add screenshots to this README by placing images in `assets/images/` (or `assets/screenshots/`) and embedding them here (Markdown):
+## Images:
+Hoodies:
   - ![screenshot](assets/images/anchordesign/blackhoodie.png)
+  - ![screenshot](assets/images/clubdesign/bluehoodie.png)
+
+Mugs:
+ - ![screenshot](assets/images/mug/white.png)
+
+Stationery:
+ - ![screenshot](assets/images/pen/black.png.png)
+ - ![screenshot](assets/images/anchordesign/blackhoodie.png)
+
 
 ## Project structure & technologies
 
@@ -108,12 +117,6 @@ Dev dependencies:
 Development tips
 - Use hot reload during UI changes: press "r" in the terminal running `flutter run`.
 - Tests use `network_image_mock` to stub network images in widget tests.
-
-Contributing
-- Fork, create a feature branch, add tests, and open a pull request.
-
-License
-- Add your license and copyright information (update `macos/Runner/Configs/AppInfo.xcconfig` and platform metadata if needed).
 
 Contact Details:
 Student email - up2210014@myport.ac.uk
