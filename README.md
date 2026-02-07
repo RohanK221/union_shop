@@ -90,8 +90,8 @@ Mugs:
  - ![screenshot](assets/images/mug/white.png)
 
 Stationery:
- - ![screenshot](assets/images/pen/black.png.png)
- - ![screenshot](assets/images/anchordesign/blackhoodie.png)
+ - ![screenshot](assets/images/pen/black.png)
+ - ![screenshot](assets/images/notebook/black.png.png)
 
 
 ## Project structure & technologies
