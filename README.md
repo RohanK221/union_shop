@@ -91,7 +91,7 @@ Mugs:
 
 Stationery:
  - ![screenshot](assets/images/pen/black.png)
- - ![screenshot](assets/images/notebook/black.png.png)
+ - ![screenshot](assets/images/notebook/black.png)
 
 
 ## Project structure & technologies
